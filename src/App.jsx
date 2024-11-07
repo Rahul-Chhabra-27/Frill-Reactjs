@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Pet from "./Pet.jsx";
+
 import SearchParams from "./SearchParams.jsx";
 
 const App = () => {

@@ -8,7 +8,7 @@ const SearchParams = () => {
   const [location, setLocation] = useState("Udaipur, Rajasthan");
   const [animal, setAnimal] = useState("dog");
   const [breed, setBreed] = useState("");
-  const [pets, setPets] = useState([]);
+
 
   const [breedData,status]  = useAnimalBreed(animal)
   console.log(breedData);

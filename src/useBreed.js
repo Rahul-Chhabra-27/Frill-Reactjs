@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 
+const localcache = {};
 
 export default function useAnimalBreed(animal) {
     const [animalBreed,setAnimalBreed] = useState([]);
     const [status,setStatus] = useState("Loading");
 
     useEffect(() => {
-      fetchBreedFromAPI();
+      if(localcache[animal]) {
+        setAnimalBreed(localcache[animal]);
+      }
+      else {
+        fetchBreedFromAPI();
+      }
     }, [animal]);
 
     async function fetchBreedFromAPI() {
@@ -20,7 +26,7 @@ export default function useAnimalBreed(animal) {
             console.log(pet.animal, animal);
             return pet.animal === animal;
         });
-        console.log(filteredBreeds)
+        localcache[animal] = filteredBreeds || [];
         setAnimalBreed(filteredBreeds);
         setStatus("Loaded");
     }
